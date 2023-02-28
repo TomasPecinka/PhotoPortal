@@ -1,0 +1,88 @@
+﻿@model PhotoPortalWebApp.ViewModels.UserProfileViewModel
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<main id="main">
+    <div class="page-header d-flex align-items-center">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-7 text-center">
+                    <h2>My Profile</h2>
+                    <div class="dashboard row mt-lg-5">
+                        <div class="col-sm mb-2">
+                            <a type="button" asp-area="" asp-controller="Club" asp-action="Create">Create Club</a>
+                        </div>
+                        <div class="col-sm mb-2">
+                            <a type="button" asp-area="" asp-controller="Photo" asp-action="Create">Upload Photo</a>
+                        </div>
+                        <div class="col-sm mb-2">
+                            <a type="button" asp-area="" asp-controller="UserProfile" asp-action="Edit">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>     
+        <div class="album py-5" style="background-color:#000">
+            <div class="container">
+                <h2>Your photos</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-lg-5">
+
+                    @foreach (var item in Model.Photos)
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow bg-dark">
+                                <img class="card-img-top" src="@item.ImageUrl" width="100%" height="225" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-text text-white">@item.Title</h6>
+                                    <p class="card-text text-bg-dark">@item.UploadDateTime</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a type="btn btn-success" asp-controller="Photo" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <a asp-controller="Photo" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                                <a asp-controller="Photo" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+                                            }
+                                        </div>
+                                        <small class="text-muted">@item.PhotoCategory</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <h2>Your clubs</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    @foreach (var item in Model.Clubs)
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow bg-dark text-white">
+                                <img class="card-img-top" src="@item.ProfilePictureUrl" width="100%" height="225" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-text">@item.Title</h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a type="btn btn-success" asp-controller="Club" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <a asp-controller="Club" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                                <a asp-controller="Club" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+                                            }
+                                        </div>
+                                        <small class="text-muted">@item.ClubCategory</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>

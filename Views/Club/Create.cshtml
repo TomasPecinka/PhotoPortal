@@ -1,0 +1,83 @@
+﻿@using PhotoPortalWebApp.Data.Enum
+@using PhotoPortalWebApp.ViewModels
+@model CreateClubViewModel
+
+
+@{
+    ViewData["Title"] = "Add New Club";
+}
+
+<main id="main">
+    <div class="page-header d-flex align-items-center" style="padding-bottom:0">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h3 class="login-title">Add new club</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="contact" class="contact" style="min-height:50vh">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5">
+                    <div class="mb-2"><a asp-action="Index">Return to clubs</a></div>
+                    <div class="row justify-content-center">
+                        <div class="col-xl-12">
+                            <form form method="POST" asp-action="Create" enctype="multipart/form-data" class="php-email-form">
+                                <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
+                                <div class="form-group mt-0">
+                                    <label asp-for="Title">Title</label>
+                                    <input asp-for="Title" class="form-control" placeholder="Title">
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="Description">Description</label>
+                                    <textarea asp-for="Description" class="form-control" rows="5" placeholder="Description"><</textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="ClubCategory">Club Category</label>
+                                    <select asp-for="ClubCategory" asp-items="@Html.GetEnumSelectList<ClubCategory>()" class="form-control">
+                                        <option>Select option</option>
+                                    </select>
+                                    <span asp-validation-for="ClubCategory" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="Address.City">City</label>
+                                    <input asp-for="Address.City" class="form-control" placeholder="City">
+                                    <span asp-validation-for="Address.City" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="Address.Street">Street</label>
+                                    <input asp-for="Address.Street" class="form-control" placeholder="Street">
+                                    <span asp-validation-for="Address.Street" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="Address.PostalCode">Postal Code</label>
+                                    <input asp-for="Address.PostalCode" class="form-control" placeholder="Postal Code">
+                                    <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="Address.Country">Country</label>
+                                    <input asp-for="Address.Country" class="form-control" placeholder="Country">
+                                    <span asp-validation-for="Address.Country" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="ProfilePicture">Profile Picture</label>
+                                    <input asp-for="ProfilePicture" type="file" class="form-control" placeholder="ProfilePicture">
+                                    <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</main>

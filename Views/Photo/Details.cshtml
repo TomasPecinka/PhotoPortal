@@ -1,0 +1,39 @@
+﻿@model PhotoPortalWebApp.Models.Photo
+
+@{
+    ViewData["Title"] = "Photo Details";
+}
+
+<main id="main">
+    <div class="page-header d-flex align-items-center" style="padding-bottom:0;min-height: 0vh">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6 text-center">
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="gallery-single" class="gallery-single">
+        <div class="container">
+            <div class="mb-3">
+                <a asp-action="Index">Return to gallery</a>
+            </div>
+            <div class="position-relative h-100">
+                 <img src="@Model.ImageUrl" alt="">
+            </div>
+            <div class="row justify-content-between gy-4 mt-4">
+                <div class="col-lg-8">
+                    <div class="portfolio-info">
+                        <h3>Photo details</h3>
+                        <ul>
+                            <li><strong>Title</strong> <h4>@Model.Title</h4></li>
+                            <li><strong>Category</strong> <span>@Model.PhotoCategory</span></li>
+                            <li><strong>Description</strong> <span>@Model.Description</span></li>
+                            <li><strong>Uploaded</strong> <span>@Model.UploadDateTime</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

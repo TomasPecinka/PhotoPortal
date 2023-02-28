@@ -1,0 +1,60 @@
+﻿@using PhotoPortalWebApp.Data.Enum;
+@model PhotoPortalWebApp.ViewModels.CreatePhotoViewModel
+
+@{
+    ViewData["Title"] = "Upload Photo";
+}
+
+<main id="main">
+    <div class="page-header d-flex align-items-center" style="padding-bottom:0">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h3 class="login-title">Upload new photo</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="contact" class="contact" style="min-height:50vh">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5">
+                    <div class="mb-2"><a asp-action="Index">Return to gallery</a></div>
+                    <div class="row justify-content-center">
+                        <div class="col-xl-12">
+                            <form form method="POST" asp-action="Create" enctype="multipart/form-data" class="php-email-form">
+                                <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
+                                <input type="hidden" name="UploadDateTime" asp-for="UploadDateTime" />
+                                <div class="form-group mt-0">
+                                    <label asp-for="Title">Title</label>
+                                    <input asp-for="Title" class="form-control" placeholder="Title">
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="Description">Description</label>
+                                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Description"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="PhotoCategory">Photo Category</label>
+                                    <select asp-for="PhotoCategory" asp-items="@Html.GetEnumSelectList<PhotoCategory>()" class="form-control">
+                                        <option>Select option</option>
+                                    </select>
+                                    <span asp-validation-for="PhotoCategory" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="Image">Image</label>
+                                    <input asp-for="Image" type="file" class="form-control" placeholder="Image">
+                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

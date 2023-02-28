@@ -1,0 +1,66 @@
+﻿@using PhotoPortalWebApp.ViewModels
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Sign up";
+}
+
+<main id="main">
+    <div class="page-header d-flex align-items-center" style="padding-bottom:0">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h3 class="login-title">Create new account</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="contact" class="contact" style="min-height:50vh">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="col-md-12 alert alert-danger">
+                            <span><b>@TempData["Error"]</b></span>
+                        </div>
+                    }
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+                            <form asp-action="Register" class="php-email-form">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group mt-0">
+                                    <label asp-for="EmailAddress" class="control-label"></label>
+                                    <input asp-for="EmailAddress" class="form-control" placeholder="Your email address"/>
+                                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-0">
+                                    <label asp-for="FullName" class="control-label">Name</label>
+                                    <input asp-for="FullName" class="form-control" placeholder="Your name"/>
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>                                
+                                <div class="form-group mt-3">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" class="form-control" placeholder="Your password"/>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm your password" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mt-3">
+                                    <div class="row">
+                                        <div class="col-sm" align="left"><button type="submit">Sign Up</button></div>
+                                        <div class="col-sm" align="right"><button class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</button></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

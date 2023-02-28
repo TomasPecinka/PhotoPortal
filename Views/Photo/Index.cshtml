@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PhotoPortalWebApp.Models.Photo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main id="main">
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2>Gallery</h2>
+            <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+      <div class="container-fluid">
+
+        <div class="row gy-4 justify-content-center">
+          @foreach (var item in Model) {
+              <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="gallery-item h-100">
+                <img class="img-fluid" src="@item.ImageUrl" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="@item.ImageUrl" title="@item.Title" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+                </div>
+              </div>
+          }
+        </div>
+      </div>
+    </section>
+  </main>
