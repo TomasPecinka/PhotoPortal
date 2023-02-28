@@ -15,7 +15,7 @@ This appliaction was made using modified BootstrapMade template [PhotoFolio](htt
   $ git clone https://github.com/TomasPecinka/PhotoPortal.git
 ```
 2. Insert your database connection string to [appsettings.json](appsettings.json)
-3. Seed database by running this command to create user roles
+3. Seed database by running this command
 ```
   $ dotnet run seeddata
 ```
