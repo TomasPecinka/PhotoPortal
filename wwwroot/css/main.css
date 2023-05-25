@@ -1,27 +1,4 @@
-/*html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}*/
-
-/**
+/*
 * Template Name: PhotoFolio - v1.2.0
 * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
 * Author: BootstrapMade.com
@@ -160,6 +137,12 @@ h6 {
         background: #2cbc85;
     }
 
+#logout-button {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+}
 /*--------------------------------------------------------------
 # Scroll top button
 --------------------------------------------------------------*/
